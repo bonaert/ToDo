@@ -1,24 +1,42 @@
 /*Header*/
-.toDoLeftHeader {
+.mainHeader {
     background: rgb(217, 95, 79);
 }
 
-.todoLeftHeaderText {
+.add-list-button {
+    background: rgb(217, 95, 79);
+    position: absolute;
+    width: 8px;
+}
+
+.listNameText  {
+    position: absolute;
+    top: 7px;
+    left: 40px;
+
+
+    text-transform: capitalize;
     color: white;
 }
 
-.toDoLeftIcon {
-    color: white;
+.todoLeftHeaderText {
     position: absolute;
-    right: 10px;
-    top: 5px;
+    top: 6px;
+    right: 20px;
+
+    font-size: 16px;
+    font-style: italic;
+
+    color: white;
 }
+
+
 
 /* Add todos*/
 
 .add-todo {
     width: 100%;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     background: white;
 }
 
@@ -38,7 +56,7 @@
     width: 60px;
 
     position: absolute;
-    top: 43px;
+    top: 52px;
     right: 10px;
 
     background: slateblue;
@@ -54,13 +72,6 @@
     background: rgb(238, 238, 238);
 }
 
-.ng-enter {
-    animation: fadeInLeft 0.5s;
-}
-
-.ng-leave {
-    animation: fadeOutRight 0.3s;
-}
 
 .todo-text {
     display: block;
@@ -109,7 +120,7 @@
 
 /*Delete todos*/
 
-Header
+/*Header*/
 .delete-todos-header {
     position: relative;
     height: 30px;
@@ -144,6 +155,18 @@ Header
     background: rgb(238, 238, 238);
     border-bottom: solid 0.2rem rgb(204, 204, 204);
 }
+
+/* Animations */
+
+
+.ng-enter {
+    animation: fadeInLeft 0.5s;
+}
+
+.ng-leave {
+    animation: fadeOutRight 0.3s;
+}
+
 
 /* Root div*/
 

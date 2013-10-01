@@ -5,6 +5,7 @@
     <title>To do list</title>
 
 
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
 
     <!-- Building blocks -->
     <link rel="stylesheet" type="text/css" href="building_blocks/css/lists.css">
@@ -16,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap-glyphicons.css">
     <link rel="stylesheet" type="text/css" href="css/lib/animate.min.css">
 
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
 
     <script type="application/javascript" src="js/lib/angular-min.js"></script>
     <script type="application/javascript" src="js/lib/angular-animate.min.js"></script>
@@ -30,20 +30,25 @@
 
 <div ng-controller="TodoCtrl" class="div-background">
 
-    <header class="toDoLeftHeader">
-        <p class="todoLeftHeaderText">
-            Todos left:
-        </p>
-
-        <p class="toDoLeftIcon">
-            {{  getCurrentTodosLength(); }}
-        </p>
-
-    </header>
-
-
-
     <section data-type="list">
+
+        <header class="mainHeader">
+
+
+            <button class="btn glyphicon glyphicon-plus-sign add-list-button"
+                    onclick="location.href='index2.html'"></button>
+
+            <p class="listNameText">
+                {{ getCurrentListName(); }}
+            </p>
+
+            <p class="todoLeftHeaderText">
+                Todos left: {{ getCurrentTodosLength(); }}
+            </p>
+        </header>
+
+
+        </header>
 
         <!-- Header and new todos-->
         <div>
@@ -120,6 +125,7 @@
             </li>
         </ul>
     </section>
+
 
     <div class="last-separator">
 
