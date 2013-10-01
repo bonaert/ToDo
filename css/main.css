@@ -1,5 +1,4 @@
-/* Header*//*
-
+/*Header*/
 .toDoLeftHeader {
     background: rgb(217, 95, 79);
 }
@@ -15,12 +14,7 @@
     top: 5px;
 }
 
-
-
-
-
-*/
-/* Add todos *//*
+/* Add todos*/
 
 .add-todo {
     width: 100%;
@@ -53,12 +47,7 @@
     border-radius: 15px;
 }
 
-
-
-
-
-*/
-/* Current todos *//*
+/* Current todos*/
 
 .current-todos {
     width: 100%;
@@ -89,12 +78,7 @@
     background: rgb(238, 238, 238);
 }
 
-
-
-
-
-*/
-/* Edit todos *//*
+/* Edit todos*/
 
 .edit-todos {
     width: 100%;
@@ -123,19 +107,9 @@
     background: rgb(238, 238, 238);
 }
 
+/*Delete todos*/
 
-
-
-
-*/
-/*
-    Delete todos
-*//*
-
-
-*/
-/* Header *//*
-
+Header
 .delete-todos-header {
     position: relative;
     height: 30px;
@@ -153,9 +127,7 @@
     top: 5px;
 }
 
-
-*/
-/* Each deleted todos*//*
+/*Each deleted todos*/
 
 .deleted-todo {
     height: 50px !important;
@@ -173,11 +145,7 @@
     border-bottom: solid 0.2rem rgb(204, 204, 204);
 }
 
-
-
-
-*/
-/* Root div *//*
+/* Root div*/
 
 body {
     background: rgb(238, 238, 238) !important;
@@ -186,4 +154,3 @@ body {
 
 
 
-*/
