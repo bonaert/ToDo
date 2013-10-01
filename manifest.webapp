@@ -1,0 +1,13 @@
+{
+    "name": "To Do List",
+    "description" : "Reminds you of your daily tasks",
+    "launch_path": "/index.html",
+    "developer": {
+        "name": "harokb"
+    },
+    "icons": {
+        "60" : "/ico/icon.png",
+        "128" : "/ico/icon.png"
+    },
+    "default_locale": "en"
+}

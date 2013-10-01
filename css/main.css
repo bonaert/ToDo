@@ -1,0 +1,189 @@
+/* Header*//*
+
+.toDoLeftHeader {
+    background: rgb(217, 95, 79);
+}
+
+.todoLeftHeaderText {
+    color: white;
+}
+
+.toDoLeftIcon {
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+
+
+
+
+*/
+/* Add todos *//*
+
+.add-todo {
+    width: 100%;
+    margin-bottom: 0px;
+    background: white;
+}
+
+.add-todo > input {
+    border: 0;
+    width: calc(100% - 95px);
+    height: 50px;
+
+    margin-top: 7px;
+    margin-left: 10px;
+    font-style: italic;
+    font-size: 17px;
+}
+
+.add-todo > button {
+    height: 30px;
+    width: 60px;
+
+    position: absolute;
+    top: 43px;
+    right: 10px;
+
+    background: slateblue;
+    color: white;
+
+    border-radius: 15px;
+}
+
+
+
+
+
+*/
+/* Current todos *//*
+
+.current-todos {
+    width: 100%;
+    background: rgb(238, 238, 238);
+}
+
+.ng-enter {
+    animation: fadeInLeft 0.5s;
+}
+
+.ng-leave {
+    animation: fadeOutRight 0.3s;
+}
+
+.todo-text {
+    display: block;
+    height: 5px;
+    border-bottom: solid 0.2rem rgb(204, 204, 204);
+}
+
+.todo-text + .todo-text {
+    margin-bottom: 2px;
+}
+
+.todo-icon {
+    margin-top: 15px;
+    right: 8px;
+    background: rgb(238, 238, 238);
+}
+
+
+
+
+
+*/
+/* Edit todos *//*
+
+.edit-todos {
+    width: 100%;
+    height: 40px;
+
+    margin-bottom: 10px;
+    background: rgb(238, 238, 238);
+
+}
+
+.edit-todo-input {
+    height: 30px;
+    width: calc(100% - 65px);
+
+    margin-top: 10px;
+    margin-left: 10px;
+
+    text-align: center;
+    font-style: italic;
+    font-size: 17px;
+}
+
+.edit-todo-button {
+    margin-top: 10px;
+    right: 5px;
+    background: rgb(238, 238, 238);
+}
+
+
+
+
+
+*/
+/*
+    Delete todos
+*//*
+
+
+*/
+/* Header *//*
+
+.delete-todos-header {
+    position: relative;
+    height: 30px;
+    background: rgb(204, 204, 204);
+}
+
+.delete-todos-header-text {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.deleted-todos-clear-button {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+
+*/
+/* Each deleted todos*//*
+
+.deleted-todo {
+    height: 50px !important;
+    background: rgb(238, 238, 238);
+    border-bottom: solid 0.2rem rgb(204, 204, 204);
+}
+
+.deleted-todo + .deleted-todo {
+    margin-bottom: 2px;
+}
+
+.last-separator {
+    width: 100%;
+    background: rgb(238, 238, 238);
+    border-bottom: solid 0.2rem rgb(204, 204, 204);
+}
+
+
+
+
+*/
+/* Root div *//*
+
+body {
+    background: rgb(238, 238, 238) !important;
+}
+
+
+
+
+*/
