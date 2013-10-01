@@ -4,52 +4,14 @@
     <meta charset="utf-8">
     <title>Building blocks demo</title>
     <!-- Building blocks -->
-    <link rel="stylesheet" href="/css/building_blocks/drawer/drawers.css">
-    <link rel="stylesheet" href="/css/building_blocks/headers/headers.css">
+    <link rel="stylesheet" href="/building_blocks/css/drawer.css">
+    <link rel="stylesheet" href="/building_blocks/css/headers.css">
 
     <!-- Util CSS: some extra tricks -->
-    <link rel="stylesheet" href="/css/building_blocks/util.css">
-
-    <script type="text/javascript" defer src="/js/app.js"></script>
-
-    <style>
-        #index {
-            height: 100%;
-        }
-
-        [data-position="right"] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            transform: translateX(100%);
-            -webkit-transform: translateX(100%);
-            z-index: 15;
-            z-index: 100; /* -> drawer */
-        }
-
-        [data-position="back"] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            opacity: 0;
-            /* z-index: 100; -> drawer */
-        }
-
-            /* Drawer */
-        section[role="region"]:not(#drawer) {
-            transition: none;
-            left: 0;
-            z-index: 0;
-            padding-left: 0;
-        }
+    <link rel="stylesheet" href="building_blocks/css/util.css">
 
 
-    </style>
+
 </head>
 <body>
 <section id="index" data-position="current">
@@ -58,14 +20,19 @@
             <menu type="toolbar">
                 <a href="#">Done</a>
             </menu>
-            <h1>Your lists</h1>
+            <h1>Drawer demo</h1>
         </header>
         <nav>
             <ul>
-                <li><a href="#">item 1</a>
-                </li>
-                <li><a href="#">item 2</a>
-                </li>
+                <li><a href="#">item 1</a></li>
+                <li><a href="#">item 2</a></li>
+                <li><a href="#">item 3</a></li>
+            </ul>
+            <h2>This is a subtitle</h2>
+            <ul>
+                <li><a href="#">item 4</a></li>
+                <li><a href="#">item 5</a></li>
+                <li><a href="#">item 6</a></li>
             </ul>
         </nav>
     </section>
@@ -96,5 +63,7 @@
 <!-- end index -->
 
 
+
 </body>
 </html>
+
