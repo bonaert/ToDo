@@ -1,9 +1,9 @@
-function TodoCtrl($scope) {
+function ShowTodoCtrl($scope) {
     'use strict';
 
-    var CURRENT_TODOS_NAME_GETTER_STRING = 'current_todos_name',
-        COMPLETED_TODOS_NAME_GETTER_STRING = 'completed_todos_name',
-        CURRENT_LIST_NAME_GETTER_STRING = 'list.current_list_name';
+    var CURRENT_TODOS_NAME_KEY = 'current_todos_name',
+        COMPLETED_TODOS_NAME_KEY = 'completed_todos_name',
+        CURRENT_LIST_NAME_KEY = 'list.current_list_name';
 
     $scope.currentTodos = [];
     $scope.completedTodos = [];
@@ -12,22 +12,21 @@ function TodoCtrl($scope) {
     if (window.localStorage) {
 
         /* Restore current todos from local storage*/
-        var savedCurrentTodos = localStorage.getItem(CURRENT_TODOS_NAME_GETTER_STRING);
+        var savedCurrentTodos = localStorage.getItem(CURRENT_TODOS_NAME_KEY);
         if (savedCurrentTodos) {
             $scope.currentTodos = JSON.parse(savedCurrentTodos);
         }
 
 
-        var savedCompletedTodos = localStorage.getItem(COMPLETED_TODOS_NAME_GETTER_STRING);
+        var savedCompletedTodos = localStorage.getItem(COMPLETED_TODOS_NAME_KEY);
         if (savedCompletedTodos) {
             $scope.completedTodos = JSON.parse(savedCompletedTodos);
         }
 
-        var savedCurrentListName = localStorage.getItem(CURRENT_LIST_NAME_GETTER_STRING);
+        var savedCurrentListName = localStorage.getItem(CURRENT_LIST_NAME_KEY);
         if (savedCurrentListName) {
             $scope.currentListName = savedCurrentListName;
         }
-
 
 
     }
@@ -36,11 +35,13 @@ function TodoCtrl($scope) {
 
     /* List functions  */
 
-    $scope.getCurrentListName = function() {
+    $scope.getCurrentListName = function () {
         return $scope.currentListName;
     };
 
-
+    $scope.setCurrentListName = function (name) {
+        $scope.currentListName = name;
+    };
 
 
     /* Length functions */
@@ -58,10 +59,6 @@ function TodoCtrl($scope) {
     };
 
 
-
-
-
-
     /* Current todos being edited functions */
     $scope.setCurrentTodoEdited = function (todo) {
         $scope.currentTodoEdited = todo;
@@ -74,9 +71,6 @@ function TodoCtrl($scope) {
     $scope.isTodoBeingEdited = function (todo) {
         return todo === $scope.currentTodoEdited;
     };
-
-
-
 
 
     /* Change todos state */
@@ -107,9 +101,6 @@ function TodoCtrl($scope) {
     };
 
 
-
-
-
     function transferElement(todo, oldArray, newArray) {
         // Allow us to restore only one todo, even if various have the same name
         var i;
@@ -127,8 +118,8 @@ function TodoCtrl($scope) {
     /* Save current and completed todos*/
     function saveTodosToLocalStorage() {
         if (window.localStorage) {
-            localStorage.setItem(CURRENT_TODOS_NAME_GETTER_STRING, JSON.stringify($scope.currentTodos));
-            localStorage.setItem(COMPLETED_TODOS_NAME_GETTER_STRING, JSON.stringify($scope.completedTodos));
+            localStorage.setItem(CURRENT_TODOS_NAME_KEY, JSON.stringify($scope.currentTodos));
+            localStorage.setItem(COMPLETED_TODOS_NAME_KEY, JSON.stringify($scope.completedTodos));
         }
     }
 
