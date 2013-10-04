@@ -171,6 +171,7 @@
 /* Root div*/
 
 body {
+    width: 100% ;
     background: rgb(238, 238, 238) !important;
 }
 

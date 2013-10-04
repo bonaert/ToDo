@@ -8,19 +8,22 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 
     <!-- Building blocks -->
-    <link rel="stylesheet" type="text/css" href="building_blocks/css/lists.css">
-    <link rel="stylesheet" type="text/css" href="building_blocks/css/drawer.css">
-    <link rel="stylesheet" type="text/css" href="building_blocks/css/headers.css">
-    <link rel="stylesheet" type="text/css" href="building_blocks/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/building_blocks/css/lists.css">
+    <link rel="stylesheet" type="text/css" href="/building_blocks/css/drawer.css">
+    <link rel="stylesheet" type="text/css" href="/building_blocks/css/headers.css">
+    <link rel="stylesheet" type="text/css" href="/building_blocks/css/util.css">
 
+    <!-- Library CSS files-->
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap-glyphicons.css">
     <link rel="stylesheet" type="text/css" href="css/lib/animate.min.css">
 
+    <script type="application/javascript" src="js/ShowTodoCtrl.js"></script>
 
+    <!-- Angular JS and animation-->
     <script type="application/javascript" src="js/lib/angular-min.js"></script>
     <script type="application/javascript" src="js/lib/angular-animate.min.js"></script>
-    <script type="application/javascript" src="js/app.js"></script>
+
     <script>
         var app = angular.module('myApp', ['ngAnimate']);
     </script>
@@ -28,7 +31,7 @@
 </head>
 <body>
 
-<div ng-controller="TodoCtrl" class="div-background">
+<div ng-controller="ShowTodoCtrl" class="div-background">
 
     <section data-type="list">
 
@@ -36,7 +39,7 @@
 
 
             <button class="btn glyphicon glyphicon-plus-sign add-list-button"
-                    onclick="location.href='index2.html'"></button>
+                    onclick="location.href='lists.html'"></button>
 
             <p class="listNameText">
                 {{ getCurrentListName(); }}
