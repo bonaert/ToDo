@@ -1,4 +1,15 @@
-function ShowTodoCtrl($scope) {
+angular.module('myApp', []);
+/*, ['ngAnimate']);*/
+
+angular.module('myApp').directive('focus', function () {
+    return function (scope, element, attrs) {
+        attrs.$observe('focus', function (newValue) {
+            newValue === 'true' && element[0].focus();
+        });
+    }
+});
+
+angular.module('myApp').controller('ShowTodoCtrl', [ '$scope', function ($scope) {
     'use strict';
 
     var CURRENT_TODOS_NAME_KEY = 'current_todos_name',
@@ -90,12 +101,11 @@ function ShowTodoCtrl($scope) {
         saveTodosToLocalStorage();
     };
 
-    $scope.changeText = function (todo, editedTodo) {
-        if (editedTodo.text.length !== 0) {
-            var newText = editedTodo.text;
+    $scope.changeText = function (todo, editedTodoText) {
+        if (editedTodoText.length !== 0) {
             var index = $scope.currentTodos.indexOf(todo);
-            $scope.currentTodos[index] = {text: newText, done: todo.done};
-            todo.text = newText;
+            $scope.currentTodos[index] = {text: editedTodoText, done: todo.done};
+            todo.text = editedTodoText;
         }
         saveTodosToLocalStorage();
     };
@@ -122,6 +132,4 @@ function ShowTodoCtrl($scope) {
             localStorage.setItem(COMPLETED_TODOS_NAME_KEY, JSON.stringify($scope.completedTodos));
         }
     }
-
-
-}
+}]);
