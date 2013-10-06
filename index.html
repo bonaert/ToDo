@@ -5,133 +5,101 @@
     <title>To do list</title>
 
 
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-
-    <!-- Building blocks -->
-    <link rel="stylesheet" type="text/css" href="/building_blocks/css/lists.css">
-    <link rel="stylesheet" type="text/css" href="/building_blocks/css/drawer.css">
-    <link rel="stylesheet" type="text/css" href="/building_blocks/css/headers.css">
-    <link rel="stylesheet" type="text/css" href="/building_blocks/css/util.css">
-
     <!-- Library CSS files-->
-    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap-glyphicons.css">
-    <link rel="stylesheet" type="text/css" href="css/lib/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/semantic/packaged/css/semantic.css">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+    <!-- Angular JS-->
+    <script type="application/javascript" src="js/lib/angular-min.js"></script>
 
     <script type="application/javascript" src="js/ShowTodoCtrl.js"></script>
 
-    <!-- Angular JS and animation-->
-    <script type="application/javascript" src="js/lib/angular-min.js"></script>
-    <script type="application/javascript" src="js/lib/angular-animate.min.js"></script>
-
-    <script>
-        var app = angular.module('myApp', ['ngAnimate']);
-    </script>
 
 </head>
 <body>
 
-<div ng-controller="ShowTodoCtrl" class="div-background">
+<div ng-controller="ShowTodoCtrl" style="margin: 0; padding: 0;">
 
-    <section data-type="list">
+    <!-- Header -->
+    <div class="ui inverted red large two item menu">
+        <a class="item">
+            {{ getCurrentListName(); }}
+        </a>
+        <a class="item">
+            Todos left: {{ getCurrentTodosLength(); }}
+        </a>
+    </div>
 
-        <header class="mainHeader">
+    <!-- Add new todo-->
+    <div class="ui form">
+        <div class="ui focus action input">
+            <input autofocus="true" placeholder="I'd like to ..." ng-model="newTodoText" type="text">
 
-
-            <button class="btn glyphicon glyphicon-plus-sign add-list-button"
-                    onclick="location.href='lists.html'"></button>
-
-            <p class="listNameText">
-                {{ getCurrentListName(); }}
-            </p>
-
-            <p class="todoLeftHeaderText">
-                Todos left: {{ getCurrentTodosLength(); }}
-            </p>
-        </header>
-
-
-        </header>
-
-        <!-- Header and new todos-->
-        <div>
-            <!-- Add new todo-->
-            <form>
-                <label class="add-todo">
-                    <input type="text" ng-model="newTodoText" placeholder="I'd like to ...">
-                    <button class="btn btn-primary" ng-click="addTodo(newTodoText); newTodoText=''">Add</button>
-                </label>
-            </form>
+            <div class="ui blue icon button" ng-click="addTodo(newTodoText); newTodoText=''">
+                <i class="add icon"></i>
+            </div>
         </div>
+    </div>
 
 
-        <!-- Show incomplete todos -->
-        <ul class="current-todos">
-            <li ng-repeat="todo in currentTodos track by $index">
+    <!-- Show incomplete todos -->
+    <div class="ui huge selection celled list">
+        <div class=" item" ng-repeat="todo in currentTodos track by $index">
 
-                <div class="current-todo">
-                    <!-- Icon -->
-                    <aside class="pack-end">
-                        <label>
-                            <button ng-show="!isTodoBeingEdited(todo)" ng-click="setCurrentTodoEdited(todo)"
-                                    class="todo-icon btn glyphicon glyphicon-edit"></button>
-                            <span></span>
-                        </label>
-                    </aside>
+            <div ng-if="!isTodoBeingEdited(todo)">
+                <!-- Icon -->
+                <div class="right floated green ui button"
+                     ng-click="setCurrentTodoEdited(todo)">
+                    <i class="edit icon"></i>
+                </div>
 
-                    <!-- Text -->
-                    <div ng-show="!isTodoBeingEdited(todo)" ng-click="setTodoCompleted(todo)" class="todo-text">
-                        <p> {{ todo.text }} </p>
+                <!-- Text -->
+                <div class="content todoComplete" ng-click="setTodoCompleted(todo)">
+                    <div class="todoText">
+                        {{ todo.text }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit todos -->
+            <div class="ui form" ng-if="isTodoBeingEdited(todo);">
+                <div class="ui small action input">
+                    <input focus="{{isTodoBeingEdited(todo)}}" type="text" ng-model="editedTodoText"
+                           style="height:40px !important;"
+                           ng-init="editedTodoText = todo.text;">
+
+                    <div class="ui positive icon button"
+                         ng-click="changeText(todo, editedTodoText); stoppedEditingTodo();">
+                        <i class="check icon"></i>
                     </div>
                 </div>
 
 
-                <!-- Edit todo -->
-                <div ng-show="isTodoBeingEdited(todo);" class="edit-todos" ng-model="editedTodo">
-                    <aside class="pack-end">
-                        <label>
-                            <button ng-click="changeText(todo, editedTodo); stoppedEditingTodo();"
-                                    class="edit-todo-button btn glyphicon glyphicon-ok"></button>
-                            <span></span>
-                        </label>
-                    </aside>
-
-                    <input type="text" ng-model="editedTodo.text"
-                           ng-init="editedTodo.text = todo.text;" class="edit-todo-input">
-                </div>
-
-            </li>
-        </ul>
-    </section>
-
-
-    <!-- Show 10 last completed todos-->
-    <section data-type="list" ng-hide="getCompletedTodosLength() === 0">
-
-        <div class="delete-todos-header">
-            <p class="delete-todos-header-text">
-                Recently deleted todos
-            </p>
-
-            <a href="#" class="deleted-todos-clear-button" ng-click="clearCompletedTodos();">
-                Clear all
-            </a>
+            </div>
 
         </div>
 
-
-        <ul id="list-container">
-            <li ng-repeat="todo in completedTodos track by $index" class="deleted-todo">
-                <div ng-click="restoreTodo(todo);">
-                    <p class="deleted-todo-text"> {{ todo.text }}</p>
-                </div>
-            </li>
-        </ul>
-    </section>
+    </div>
 
 
-    <div class="last-separator">
+    <!-- Show 10 last completed todos-->
+    <!-- Header -->
+    <div class="ui inverted red two item menu" ng-show="getCompletedTodosLength() !== 0">
+        <a class="item">
+            Completed todos
+        </a>
 
+        <a class="item" ng-click="clearCompletedTodos();">
+            Clear all
+        </a>
+    </div>
+
+    <div class="ui selection celled list">
+        <div class="item" ng-repeat="todo in completedTodos track by $index" ng-click="restoreTodo(todo);">
+            <p> {{ todo.text }}</p>
+        </div>
     </div>
 
 </div>
