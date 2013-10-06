@@ -1,25 +1,12 @@
 CACHE MANIFEST
 # v0.1
-/ToDo/index.html
+index.html
 
 # CSS
-/ToDo/css/lists.css
-/ToDo/css/main.css
-/ToDo/css/lib/bootstrap.min.css
-/ToDo/css/lib/bootstrap-glyphicons.css
-#/css/lib/bootstrap-theme.min.css
+css/main.css
+css/lib/semantic/packaged/css/semantic.min.css
 
 
 # Javascript
-/ToDo/js/app.js
-/ToDo/js/lib/angular-min.js
-
-#/js/lib/underscore-min.js
-#/js/lib/jquery-min.js
-#/js/lib/bootstrap.min.js
-
-# Glyphicons
-/ToDo/fonts/glyphicons-halflings-regular.eot
-/ToDo/fonts/glyphicons-halflings-regular.svg
-/ToDo/fonts/glyphicons-halflings-regular.ttf
-/ToDo/fonts/glyphicons-halflings-regular.woff
+js/ShowTodoCtrl.js
+js/lib/angular-min.js
