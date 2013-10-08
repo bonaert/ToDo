@@ -9,6 +9,16 @@ input {
     font-size: 15px !important;
 }
 
+.listButton {
+    width: calc(100% - 170px) !important;
+}
+
+.listName {
+    text-align: center;
+    color: white !important;
+    font-size: 17px;
+}
+
 .completeTodo {
     width: calc(100% - 90px);
 }
