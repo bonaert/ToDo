@@ -1,22 +1,14 @@
 function listCtrl($scope) {
-    function getListNameFromLocalStorage() {
-        if (window.localStorage) {
-            var LIST_NAMES_KEY = 'list_names_key';
-            var savedListNames = localStorage.getItem(LIST_NAMES_KEY);
-            if (savedListNames) {
-                return savedListNames;
-            } else {
-                return ['Default'];
-            }
-        } else {
-            return ['Default'];
-        }
-    }
 
-    $scope.listNames = getListNameFromLocalStorage();
+    var LIST_NAMES_KEY = 'all.list.names';
+    var CURRENT_LIST_NAME_KEY = 'list.current_list_name';
+    $scope.listNames = getFromLocalStorage(LIST_NAMES_KEY) || ['Default'];
 
-    $scope.addNewList = function(listName) {
+    $scope.addList = function (listName) {
         $scope.listNames.push(listName);
+        saveToLocalStorage(LIST_NAMES_KEY, $scope.listNames);
+        saveToLocalStorage(CURRENT_LIST_NAME_KEY, listName);
+        window.location.replace('index.html');
     }
 
 }
