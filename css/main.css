@@ -10,7 +10,7 @@ input {
 }
 
 .listButton {
-    width: calc(100% - 170px) !important;
+    width: calc(100% - 185px) !important;
 }
 
 .listName {
