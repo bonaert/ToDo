@@ -1,4 +1,5 @@
 angular.module('myApp', []);
+
 /*, ['ngAnimate']);*/
 
 angular.module('myApp').directive('focus', function () {
@@ -9,38 +10,18 @@ angular.module('myApp').directive('focus', function () {
     }
 });
 
-angular.module('myApp').controller('ShowTodoCtrl', [ '$scope', function ($scope) {
+angular.module('myApp').controller('ShowTodoCtrl', ['$scope', function ($scope) {
     'use strict';
 
     var CURRENT_TODOS_NAME_KEY = 'current_todos_name',
         COMPLETED_TODOS_NAME_KEY = 'completed_todos_name',
         CURRENT_LIST_NAME_KEY = 'list.current_list_name';
 
-    $scope.currentTodos = [];
-    $scope.completedTodos = [];
-    $scope.currentListName = 'Default';
-
-    if (window.localStorage) {
-
-        /* Restore current todos from local storage*/
-        var savedCurrentTodos = localStorage.getItem(CURRENT_TODOS_NAME_KEY);
-        if (savedCurrentTodos) {
-            $scope.currentTodos = JSON.parse(savedCurrentTodos);
-        }
+    $scope.currentListName = getFromLocalStorage(CURRENT_LIST_NAME_KEY) || 'Default';
+    $scope.currentTodos = getFromLocalStorage($scope.currentListName + '.' + CURRENT_TODOS_NAME_KEY) || [];
+    $scope.completedTodos = getFromLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY) || [];
 
 
-        var savedCompletedTodos = localStorage.getItem(COMPLETED_TODOS_NAME_KEY);
-        if (savedCompletedTodos) {
-            $scope.completedTodos = JSON.parse(savedCompletedTodos);
-        }
-
-        var savedCurrentListName = localStorage.getItem(CURRENT_LIST_NAME_KEY);
-        if (savedCurrentListName) {
-            $scope.currentListName = savedCurrentListName;
-        }
-
-
-    }
 
     $scope.currentTodoEdited = null;
 
@@ -125,11 +106,12 @@ angular.module('myApp').controller('ShowTodoCtrl', [ '$scope', function ($scope)
     }
 
 
-    /* Save current and completed todos*/
     function saveTodosToLocalStorage() {
-        if (window.localStorage) {
-            localStorage.setItem(CURRENT_TODOS_NAME_KEY, JSON.stringify($scope.currentTodos));
-            localStorage.setItem(COMPLETED_TODOS_NAME_KEY, JSON.stringify($scope.completedTodos));
-        }
+        saveToLocalStorage($scope.currentListName + '.' + CURRENT_TODOS_NAME_KEY, $scope.currentTodos);
+        saveToLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY, $scope.completedTodos);
     }
-}]);
+
+
+}])
+
+
