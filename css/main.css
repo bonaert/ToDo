@@ -14,6 +14,9 @@ input {
 }
 
 .listName {
+    overflow: hidden !important;
+    white-space: nowrap; /* Don't forget this one */
+    text-overflow: ellipsis;
     text-align: center;
     color: white !important;
     font-size: 17px;
@@ -24,6 +27,14 @@ input {
 }
 
 .todoText {
+
+    /* Crop text when it is too long*/
+    height: 100%;
+    overflow: hidden !important;
+    white-space: nowrap; /* Don't forget this one */
+    text-overflow: ellipsis;
+
+
     padding-top: 8px;
     height: 28px;
 
