@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp" manifest="offline.appcache">
+<html ng-app="myApp"> <!--manifest="offline.appcache">-->
 <head>
     <meta charset="utf-8">
     <title>To do list</title>
@@ -13,23 +13,54 @@
 
     <!-- Angular JS-->
     <script type="application/javascript" src="js/lib/angular-min.js"></script>
+    <script type="application/javascript" src="js/lib/jquery-min.js"></script>
+    <script type="application/javascript" src="css/lib/semantic/packaged/javascript/semantic.js"></script>
 
     <script type="application/javascript" src="js/ShowTodoCtrl.js"></script>
+    <script type="application/javascript" src="js/sidebar.js"></script>
 
 
 </head>
 <body>
 
-<div ng-controller="ShowTodoCtrl" style="margin: 0; padding: 0;">
+<div ng-controller="ShowTodoCtrl">
+
+
+    <div class="ui inverted black vertical demo sidebar menu">
+        <a class="large item" href="lists.html">
+            <i class="add icon"></i>
+            New List
+        </a>
+        <a class="large item" href="edit.html">
+            <i class="edit icon"></i>
+            Edit List
+        </a>
+
+        <a class="large item" href="edit.html">
+            <i class="settings icon"></i>
+            Setting
+        </a>
+    </div>
 
     <!-- Header -->
-    <div class="ui inverted red large two item menu">
-        <a class="item">
-            {{ getCurrentListName(); }}
+    <div class="ui inverted red large menu">
+
+        <div class="ui launch button red item">
+            <i class="list layout icon"></i>
+        </div>
+
+        <a class="item listButton">
+            <p class="listName">
+                {{getCurrentListName()}}
+            </p>
         </a>
-        <a class="item">
+
+
+        <a class="item"> <!-- 110 px-->
             Todos left: {{ getCurrentTodosLength(); }}
         </a>
+
+
     </div>
 
     <!-- Add new todo-->
@@ -46,7 +77,7 @@
 
     <!-- Show incomplete todos -->
     <div class="ui huge selection celled list">
-        <div class=" item" ng-repeat="todo in currentTodos track by $index">
+        <div class="item" ng-repeat="todo in currentTodos track by $index">
 
             <div ng-if="!isTodoBeingEdited(todo)">
                 <!-- Icon -->
@@ -86,7 +117,7 @@
 
     <!-- Show 10 last completed todos-->
     <!-- Header -->
-    <div class="ui inverted red two item menu" ng-show="getCompletedTodosLength() !== 0">
+    <div class="ui large inverted red two item menu" ng-show="getCompletedTodosLength() !== 0">
         <a class="item">
             Completed todos
         </a>
@@ -96,9 +127,11 @@
         </a>
     </div>
 
-    <div class="ui selection celled list">
+    <div class="ui huge selection celled list">
         <div class="item" ng-repeat="todo in completedTodos track by $index" ng-click="restoreTodo(todo);">
-            <p> {{ todo.text }}</p>
+            <div class="completeTodo todoText">
+                {{ todo.text }}
+            </div>
         </div>
     </div>
 
