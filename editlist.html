@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="utf-8">
+    <title>Your Lists</title>
+
+    <link rel="stylesheet" type="text/css" href="css/lib/semantic/packaged/css/semantic.css">
+    <link rel="stylesheet" type="text/css" href="css/newlist.css">
+
+    <script type="application/javascript" src="js/lib/angular-min.js"></script>
+    <script type="application/javascript" src="js/lib/jquery-min.js"></script>
+    <script type="application/javascript" src="css/lib/semantic/packaged/javascript/semantic.js"></script>
+
+    <script type="application/javascript" src="js/localStorageFunctions.js"></script>
+    <script type="application/javascript" src="js/editListCtrl.js"></script>
+    <script type="application/javascript" src="js/inputValidation.js"></script>
+
+
+</head>
+
+
+<body ng-controller="editListCtrl">
+
+<a class="ui red icon button" href="index.html" style="width:100%">
+    <i class="reply mail icon"></i>
+    Go back
+</a>
+
+<!-- Add new list-->
+<div class="ui form segment">
+    <div class="field">
+        <label class="listLabel">List Name</label>
+
+        <div class="ui left huge labeled icon input">
+            <input autofocus name="listName" placeholder="List Name" type="text" ng-model="listName"
+                   ng-init="listName = getCurrentListName()">
+            <i class="calendar icon"></i>
+        </div>
+    </div>
+    <div class="ui blue submit button" ng-click="updateName(listName)">update</div>
+
+</div>
+
+
+</body>
+</html>
