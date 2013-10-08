@@ -12,7 +12,7 @@
     <script type="application/javascript" src="css/lib/semantic/packaged/javascript/semantic.js"></script>
 
     <script type="application/javascript" src="js/localStorageFunctions.js"></script>
-    <script type="application/javascript" src="js/listCtrl.js"></script>
+    <script type="application/javascript" src="js/newListCtrl.js"></script>
     <script type="application/javascript" src="js/inputValidation.js"></script>
 
 
@@ -20,7 +20,7 @@
 </head>
 
 
-<body ng-controller="listCtrl">
+<body ng-controller="newListCtrl">
 
 <a class="ui red icon button" href="index.html" style="width:100%">
     <i class="reply mail icon"></i>
@@ -33,7 +33,7 @@
         <label class="listLabel">List Name</label>
 
         <div class="ui left huge labeled icon input">
-            <input autofocus="true" name="listName" placeholder="List Name" type="text" ng-model="newListName">
+            <input autofocus name="listName" placeholder="List Name" type="text" ng-model="newListName">
             <i class="calendar icon"></i>
         </div>
     </div>
