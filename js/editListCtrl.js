@@ -25,7 +25,6 @@ function editListCtrl($scope) {
     $scope.updateName = function (listName) {
         if (listName !== $scope.currentListName) {
             var index = $scope.listNames.indexOf($scope.currentListName);
-            alert($scope.listNames);
             if (index !== -1) {
                 $scope.listNames.splice(index, 1, listName);
                 saveToLocalStorage(LIST_NAMES_KEY, $scope.listNames);
