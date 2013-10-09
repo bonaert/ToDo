@@ -7,7 +7,7 @@ function saveToLocalStorage(name, element) {
 function getFromLocalStorage(name){
     if (window.localStorage){
         var item = localStorage.getItem(name);
-        if (item) {
+        if (item && item != "undefined") {
             return JSON.parse(item);
         }
     }
