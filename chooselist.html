@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp"> <!--manifest="offline.appcache">-->
+<head>
+    <meta charset="utf-8">
+    <title>To do list</title>
+
+
+    <!-- Library CSS files-->
+    <link rel="stylesheet" type="text/css" href="css/lib/semantic/packaged/css/semantic.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/main.css">-->
+
+
+    <!-- Angular JS-->
+    <script type="application/javascript" src="js/lib/angular-min.js"></script>
+    <script type="application/javascript" src="js/localStorageFunctions.js"></script>
+    <script type="application/javascript" src="js/chooseListCtrl.js"></script>
+
+
+</head>
+<body ng-controller="chooseListCtrl">
+
+
+<a class="ui red icon button" href="index.html" style="width:100%">
+    <i class="reply mail icon"></i>
+    Go back
+</a>
+
+<!-- Show incomplete todos -->
+<div class="ui huge selection celled list">
+    <div class="item" ng-repeat="listName in listNames">
+        <a ng-click="chooseList(listName)">
+            {{listName}}
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
+
+
