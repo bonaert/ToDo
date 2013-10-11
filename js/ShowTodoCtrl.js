@@ -15,9 +15,9 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
         COMPLETED_TODOS_NAME_KEY = 'completed_todos_name',
         CURRENT_LIST_NAME_KEY = 'list.current_list_name';
 
-    $scope.currentListName = getFromLocalStorage(CURRENT_LIST_NAME_KEY) || 'Default';
-    $scope.currentTodos = getFromLocalStorage($scope.currentListName + '.' + CURRENT_TODOS_NAME_KEY) || [];
-    $scope.completedTodos = getFromLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY) || [];
+    $scope.currentListName = getElementFromLocalStorage(CURRENT_LIST_NAME_KEY) || 'Default';
+    $scope.currentTodos = getElementFromLocalStorage($scope.currentListName + '.' + CURRENT_TODOS_NAME_KEY) || [];
+    $scope.completedTodos = getElementFromLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY) || [];
 
 
     $scope.currentTodoEdited = null;
@@ -104,8 +104,8 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
 
 
     function saveTodosToLocalStorage() {
-        saveToLocalStorage($scope.currentListName + '.' + CURRENT_TODOS_NAME_KEY, $scope.currentTodos);
-        saveToLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY, $scope.completedTodos);
+        saveElementToLocalStorage($scope.currentListName + '.' + CURRENT_TODOS_NAME_KEY, $scope.currentTodos);
+        saveElementToLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY, $scope.completedTodos);
     }
 
 
