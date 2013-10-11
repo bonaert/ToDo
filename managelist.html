@@ -7,7 +7,7 @@
 
     <!-- Library CSS files-->
     <link rel="stylesheet" type="text/css" href="css/lib/semantic/packaged/css/semantic.min.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css">-->
+    <link rel="stylesheet" type="text/css" href="css/managelist.css">
 
 
     <!-- Angular JS-->
@@ -36,9 +36,12 @@
             <i class="delete simple icon"></i>
         </div>
 
-        <a ng-click="chooseList(listName)">
-            {{listName}}
-        </a>
+        <!-- Text -->
+        <div class="content listContainer" ng-click="chooseList(listName)">
+            <div class="listText">
+                {{listName}}
+            </div>
+        </div>
     </div>
 </div>
 

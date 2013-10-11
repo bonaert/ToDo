@@ -1,0 +1,15 @@
+.listContainer {
+    width: calc(100% - 90px);
+}
+
+.listText {
+
+    /* Crop text when it is too long*/
+    height: 28px;
+    overflow: hidden !important;
+    white-space: nowrap; /* Don't forget this one */
+    text-overflow: ellipsis;
+
+    padding-top: 8px;
+
+}
