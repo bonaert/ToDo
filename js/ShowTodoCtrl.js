@@ -1,8 +1,6 @@
-angular.module('myApp', []);
+var app = angular.module('myApp', ['ngAnimate']);
 
-/*, ['ngAnimate']);*/
-
-angular.module('myApp').directive('focus', function () {
+app.directive('focus', function () {
     return function (scope, element, attrs) {
         attrs.$observe('focus', function (newValue) {
             newValue === 'true' && element[0].focus();
@@ -10,7 +8,7 @@ angular.module('myApp').directive('focus', function () {
     }
 });
 
-angular.module('myApp').controller('ShowTodoCtrl', ['$scope', function ($scope) {
+app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
     'use strict';
 
     var CURRENT_TODOS_NAME_KEY = 'current_todos_name',

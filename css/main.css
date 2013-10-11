@@ -48,6 +48,9 @@ input {
     font-size: 30px;
 }
 
+.ng-enter {
+    animation: fadeInLeftBig 0.3s;
+}
 
 
 
