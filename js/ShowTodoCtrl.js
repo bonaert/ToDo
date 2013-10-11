@@ -22,7 +22,6 @@ angular.module('myApp').controller('ShowTodoCtrl', ['$scope', function ($scope) 
     $scope.completedTodos = getFromLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY) || [];
 
 
-
     $scope.currentTodoEdited = null;
 
     /* List functions  */
@@ -112,6 +111,6 @@ angular.module('myApp').controller('ShowTodoCtrl', ['$scope', function ($scope) 
     }
 
 
-}])
+}]);
 
 

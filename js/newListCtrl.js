@@ -1,5 +1,4 @@
 function newListCtrl($scope) {
-
     var LIST_NAMES_KEY = 'all.list.names';
     var CURRENT_LIST_NAME_KEY = 'list.current_list_name';
     $scope.listNames = getFromLocalStorage(LIST_NAMES_KEY) || ['Default'];
@@ -12,7 +11,4 @@ function newListCtrl($scope) {
         }
         window.location.replace('index.html');
     }
-
-
-
 }
