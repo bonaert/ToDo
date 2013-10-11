@@ -13,11 +13,11 @@
     <!-- Angular JS-->
     <script type="application/javascript" src="js/lib/angular-min.js"></script>
     <script type="application/javascript" src="js/localStorageFunctions.js"></script>
-    <script type="application/javascript" src="js/chooseListCtrl.js"></script>
+    <script type="application/javascript" src="js/manageListCtrl.js"></script>
 
 
 </head>
-<body ng-controller="chooseListCtrl">
+<body ng-controller="manageListCtrl">
 
 
 <a class="ui red icon button" href="index.html" style="width:100%">
@@ -25,9 +25,17 @@
     Go back
 </a>
 
+
+
 <!-- Show incomplete todos -->
 <div class="ui huge selection celled list">
     <div class="item" ng-repeat="listName in listNames">
+        <!-- Icon -->
+        <div class="right floated red ui small button"
+             ng-click="deleteList(listName)">
+            <i class="delete simple icon"></i>
+        </div>
+
         <a ng-click="chooseList(listName)">
             {{listName}}
         </a>
