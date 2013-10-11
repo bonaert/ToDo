@@ -9,6 +9,8 @@ function getFromLocalStorage(name){
         var item = localStorage.getItem(name);
         if (item && item != "undefined") {
             return JSON.parse(item);
+        } else {
+            return undefined;
         }
     }
 }
