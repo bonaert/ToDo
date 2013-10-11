@@ -3,7 +3,7 @@
     "description" : "An easy and beautiful app to remind you of your to-do tasks.",
     "launch_path": "/index.html",
     "developer": {
-        "name": "harokb",
+        "name": "Remindo",
         "url": "https://github.com/harokb/ToDo"
     },
     "icons": {
@@ -15,5 +15,6 @@
         "128" : "/ico/icon-128.png",
         "256" : "/ico/icon-256.png"
     },
-    "default_locale": "en"
+    "default_locale": "en",
+    "version": "1.0"
 }
