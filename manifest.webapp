@@ -1,13 +1,19 @@
 {
-    "name": "To Do List",
-    "description" : "Reminds you of your daily tasks",
+    "name": "Remindo",
+    "description" : "An easy and beautiful app to remind you of your to-do tasks.",
     "launch_path": "/index.html",
     "developer": {
-        "name": "harokb"
+        "name": "harokb",
+        "url": "https://github.com/harokb/ToDo"
     },
     "icons": {
-        "60" : "/ico/icon.png",
-        "128" : "/ico/icon.png"
+        "30" : "/ico/icon-30.png",
+        "32" : "/ico/icon-32.png",
+        "60" : "/ico/icon-60.png",
+        "90" : "/ico/icon-90.png",
+        "120" : "/ico/icon-120.png",
+        "128" : "/ico/icon-128.png",
+        "256" : "/ico/icon-256.png"
     },
     "default_locale": "en"
 }
