@@ -11,13 +11,9 @@ app.directive('focus', function () {
 app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
     'use strict';
 
-    var CURRENT_TODOS_NAME_KEY = 'current_todos_name',
-        COMPLETED_TODOS_NAME_KEY = 'completed_todos_name',
-        CURRENT_LIST_NAME_KEY = 'list.current_list_name';
-
-    $scope.currentListName = getElementFromLocalStorage(CURRENT_LIST_NAME_KEY) || 'Default';
-    $scope.currentTodos = getElementFromLocalStorage($scope.currentListName + '.' + CURRENT_TODOS_NAME_KEY) || [];
-    $scope.completedTodos = getElementFromLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY) || [];
+    $scope.currentListName = getCurrentListFromLocalStorage();
+    $scope.currentTodos = getCurrentTodosOfListFromLocalStorage($scope.currentListName);
+    $scope.completedTodos = getCompletedTodosOfListFromLocalStorage($scope.currentListName);
 
 
     $scope.currentTodoEdited = null;
@@ -44,7 +40,7 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
 
     $scope.clearCompletedTodos = function () {
         $scope.completedTodos = [];
-        saveTodosToLocalStorage();
+        saveTodosInLocalStorage();
     };
 
 
@@ -76,7 +72,7 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
             var todo = {text: newTodoText};
             $scope.currentTodos.push(todo);
         }
-        saveTodosToLocalStorage();
+        saveTodosInLocalStorage();
     };
 
     $scope.changeText = function (todo, editedTodoText) {
@@ -85,7 +81,7 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
             $scope.currentTodos[index] = {text: editedTodoText, done: todo.done};
             todo.text = editedTodoText;
         }
-        saveTodosToLocalStorage();
+        saveTodosInLocalStorage();
     };
 
 
@@ -96,16 +92,15 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
             if (oldArray[i] === todo) {
                 var removedTodo = oldArray.splice(i, 1)[0];
                 newArray.push(removedTodo);
-                saveTodosToLocalStorage();
+                saveTodosInLocalStorage();
                 return;
             }
         }
     }
 
 
-    function saveTodosToLocalStorage() {
-        saveElementToLocalStorage($scope.currentListName + '.' + CURRENT_TODOS_NAME_KEY, $scope.currentTodos);
-        saveElementToLocalStorage($scope.currentListName + '.' + COMPLETED_TODOS_NAME_KEY, $scope.completedTodos);
+    function saveTodosInLocalStorage() {
+        saveTodosToLocalStorage($scope.currentListName, $scope.currentTodos, $scope.completedTodos);
     }
 
 

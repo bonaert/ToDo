@@ -1,25 +1,13 @@
 angular.module('myApp', []);
 
 angular.module('myApp').controller('manageListCtrl', ['$scope', function ($scope) {
-    var LIST_NAMES_KEY = 'all.list.names',
-        CURRENT_LIST_NAME_KEY = 'list.current_list_name',
-        CURRENT_TODOS_NAME_KEY = 'current_todos_name',
-        COMPLETED_TODOS_NAME_KEY = 'completed_todos_name';
 
-    $scope.listNames = getElementFromLocalStorage(LIST_NAMES_KEY) || ['Default'];
-    $scope.currentListName = getElementFromLocalStorage(CURRENT_LIST_NAME_KEY) || 'Default';
+    $scope.listNames = getAllListNamesFromLocalStorage();
+    $scope.currentListName = getCurrentListFromLocalStorage();
 
     $scope.chooseList = function (listName) {
-        $scope.currentListName = listName;
-        saveElementToLocalStorage(CURRENT_LIST_NAME_KEY, $scope.currentListName);
+        changeCurrentListInLocalStorage(listName);
         window.location.replace('index.html');
-    };
-
-    var removeListFromLocalStorage = function (listName) {
-        saveElementToLocalStorage(CURRENT_LIST_NAME_KEY, $scope.currentListName);
-        saveElementToLocalStorage(LIST_NAMES_KEY, $scope.listNames);
-        removeElementFromLocalStorage(listName + '.' + CURRENT_TODOS_NAME_KEY);
-        removeElementFromLocalStorage(listName + '.' + COMPLETED_TODOS_NAME_KEY);
     };
 
 
