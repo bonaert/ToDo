@@ -136,8 +136,13 @@
     </div>
 
     <div class="ui huge selection celled list">
-        <div class="item" ng-repeat="todo in completedTodos track by $index" ng-click="restoreTodo(todo);">
-            <div class="completeTodo todoText">
+        <div class="item" ng-repeat="todo in completedTodos track by $index" >
+            <div class="right floated red ui button"
+                 ng-click="deleteCompletedTodo(todo)">
+                <i class="delete icon"></i>
+            </div>
+
+            <div class="completeTodo todoText" ng-click="restoreTodo(todo);">
                 {{ todo.text }}
             </div>
         </div>

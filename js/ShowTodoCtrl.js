@@ -84,6 +84,19 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
         saveTodosInLocalStorage();
     };
 
+    var deleteTodoFromList = function (todoList, todo) {
+        var index = todoList.indexOf(todo);
+        if (index > -1) {
+            todoList.splice(index, 1);
+        }
+    };
+
+
+    $scope.deleteCompletedTodo = function(todo) {
+        deleteTodoFromList($scope.completedTodos, todo);
+        saveTodosInLocalStorage();
+    }
+
 
     function transferElement(todo, oldArray, newArray) {
         // Allow us to restore only one todo, even if various have the same name
