@@ -10,34 +10,42 @@ angular.module('myApp').controller('manageListCtrl', ['$scope', function ($scope
         window.location.replace('index.html');
     };
 
-
     $scope.deleteList = function (listName) {
-
-        /* If we delete the last element, rebuild default */
-        if (listName !== 'Default' && $scope.listNames.length <= 1) {
-            $scope.currentListName = 'Default';
-            $scope.listNames = ['Default'];
-            localStorage.clear();
-            return;
+        var isLastElementBeingDeleted = $scope.listNames.length <= 1;
+        if (isLastElementBeingDeleted) {
+            replaceWithEmptyDefaultList();
+        } else {
+            removeListAndUpdateLocalStorage(listName);
         }
+    }
 
+    function replaceWithEmptyDefaultList() {
+        $scope.currentListName = 'Default';
+        $scope.listNames = ['Default'];
+        localStorage.clear();
+    }
 
+    function removeListAndUpdateLocalStorage(listName) {
+        removeListFromListOfListNames(listName);
+        removeListFromLocalStorage(listName);
+    }
+
+    function removeListFromListOfListNames(listName) {
+        tryToRemoveListFromListOfListNames(listName);
+        updateCurrentListNameIfDeleted(listName);
+    }
+
+    function tryToRemoveListFromListOfListNames(listName) {
         var index = $scope.listNames.indexOf(listName);
         if (index > -1) {
             $scope.listNames.splice(index, 1);
         }
+    }
 
+    function updateCurrentListNameIfDeleted(listName) {
         if ($scope.currentListName == listName) {
             $scope.currentListName = $scope.listNames[0];
         }
-
-        if ($scope.listNames.length === 0) {
-            $scope.currentListName = 'Default';
-            $scope.listNames = ['Default'];
-        }
-
-        removeListFromLocalStorage(listName);
     }
 
-}
-]);
+}]);

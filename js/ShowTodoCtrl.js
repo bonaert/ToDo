@@ -67,20 +67,41 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
         transferElement(oldTodo, $scope.completedTodos, $scope.currentTodos);
     };
 
+
     $scope.addTodo = function (newTodoText) {
+        addTodoToTodoList(newTodoText);
+        saveTodosInLocalStorage();
+    };
+
+    function addTodoToTodoList(newTodoText) {
         if (newTodoText) {
             var todo = {text: newTodoText};
             $scope.currentTodos.push(todo);
         }
+    }
+
+    $scope.changeText = function (todo, editedTodoText) {
+        changeTodoText(editedTodoText, todo);
         saveTodosInLocalStorage();
     };
 
-    $scope.changeText = function (todo, editedTodoText) {
-        if (editedTodoText.length !== 0) {
-            var index = $scope.currentTodos.indexOf(todo);
-            $scope.currentTodos[index] = {text: editedTodoText, done: todo.done};
-            todo.text = editedTodoText;
+
+    function changeTodoText(editedTodoText, todo) {
+        var newTextHasCharacters = editedTodoText.length !== 0;
+        if (newTextHasCharacters) {
+            updateTodoText(todo, editedTodoText);
         }
+    }
+
+    function updateTodoText(todo, editedTodoText) {
+        var index = $scope.currentTodos.indexOf(todo);
+        $scope.currentTodos[index] = {text: editedTodoText};
+        todo.text = editedTodoText;
+    }
+
+
+    $scope.deleteCompletedTodo = function (todo) {
+        deleteTodoFromList($scope.completedTodos, todo);
         saveTodosInLocalStorage();
     };
 
@@ -90,12 +111,6 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
             todoList.splice(index, 1);
         }
     };
-
-
-    $scope.deleteCompletedTodo = function(todo) {
-        deleteTodoFromList($scope.completedTodos, todo);
-        saveTodosInLocalStorage();
-    }
 
 
     function transferElement(todo, oldArray, newArray) {

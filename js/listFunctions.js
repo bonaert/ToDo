@@ -4,19 +4,19 @@ var LIST_NAMES_KEY = 'all.list.names',
     COMPLETED_TODOS_NAME_KEY = 'completed_todos_name';
 
 function getCurrentListFromLocalStorage() {
-    return getElementFromLocalStorage(CURRENT_LIST_NAME_KEY) || 'Default';
+    return getElementFromLocalStorageIfPossible(CURRENT_LIST_NAME_KEY) || 'Default';
 }
 
 function getAllListNamesFromLocalStorage() {
-    return getElementFromLocalStorage(LIST_NAMES_KEY) || ['Default'];
+    return getElementFromLocalStorageIfPossible(LIST_NAMES_KEY) || ['Default'];
 }
 
 function getCurrentTodosOfListFromLocalStorage(listName) {
-    return getElementFromLocalStorage(listName + '.' + CURRENT_TODOS_NAME_KEY) || [];
+    return getElementFromLocalStorageIfPossible(listName + '.' + CURRENT_TODOS_NAME_KEY) || [];
 }
 
 function getCompletedTodosOfListFromLocalStorage(listName) {
-    return getElementFromLocalStorage(listName + '.' + COMPLETED_TODOS_NAME_KEY) || [];
+    return getElementFromLocalStorageIfPossible(listName + '.' + COMPLETED_TODOS_NAME_KEY) || [];
 }
 
 
@@ -24,8 +24,8 @@ function replaceLocalStorageTodos(oldListName, newListName) {
     var old_current_todo_list_key = oldListName + '.' + CURRENT_TODOS_NAME_KEY;
     var old_completed_todo_list_key = oldListName + '.' + COMPLETED_TODOS_NAME_KEY;
 
-    var currentTodos = getElementFromLocalStorage(old_current_todo_list_key);
-    var completedTodos = getElementFromLocalStorage(old_completed_todo_list_key);
+    var currentTodos = getElementFromLocalStorageIfPossible(old_current_todo_list_key);
+    var completedTodos = getElementFromLocalStorageIfPossible(old_completed_todo_list_key);
 
     saveElementToLocalStorage(newListName + '.' + CURRENT_TODOS_NAME_KEY, currentTodos);
     saveElementToLocalStorage(newListName + '.' + COMPLETED_TODOS_NAME_KEY, completedTodos);

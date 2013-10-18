@@ -7,7 +7,6 @@ function editListCtrl($scope) {
         if (newListName !== $scope.currentListName) {
             updateName($scope.currentListName, newListName, $scope.listNames)
         }
-
         window.location.replace('index.html');
     };
 
