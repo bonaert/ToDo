@@ -1,0 +1,51 @@
+Uses a lot of Uncle Bob's clean code advice:
+
+  Names
+-----------
+
+Word separation: CamelCase
+
+1. Choose your names thoughtfully:
+    - daysInMonth, instead of dm
+    - listNames, instead of names
+
+2. Communicate your intent:
+    - If you need a comment to explain your intent, your name is bad
+    - Express your name clearly and precisely
+
+3. Avoid Disinformation:
+    - Don't let your names rot
+    - Don't let your names degrade
+    - If your intent changes, change the name
+    - A name must say what it means and mean what it says
+
+4. Choose pronounceable names:
+    - If you want to discuss about your code, you need pronounceable names
+    - Pronounceable names are easier to read and understand
+
+5. Avoid encodings (like Hungarian Notation):
+    - There is no need to use encodings (I for interface, m_ for member names, ...)
+    - Powerful IDES make this useless
+    - Unit test to prevent type errors
+
+6. Choose your parse of speech well:
+    - Use the appropriate type of words on different structures:
+
+        Classes -> Nouns (e.g. Account, Date)
+        Variables -> Nouns (e.g. dayOfTheWeek, numberOfCustomers)
+        Methods -> Verbs (e.g. getFirstName, removeElement)
+        Boolean -> Predicates (e.g. isEmpty, isAvailable)
+
+    - Code should and must read like a sentence
+
+7. Scope rule:
+
+    Variables:
+        * The longer the scope, the longer the name
+        * for (d: list):                          OK
+        * var d = documents.getFirstDocument()   !WRONG
+
+    Functions and Classes:
+        * The longer the scope, the shorter the scope
+        * Public Methods should be short
+        * Private functions should have descriptive names
