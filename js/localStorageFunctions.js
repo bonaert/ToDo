@@ -1,5 +1,9 @@
 function isLocalStorageAvailable() {
-    return window.localStorage;
+    if (window.localStorage != undefined) {
+        return true
+    } else {
+        return false;
+    }
 }
 
 function saveElementToLocalStorage(name, element) {
@@ -16,10 +20,12 @@ function getElementFromLocalStorageIfPossible(name) {
 
 function getElementElementFromLocalStorage(name) {
     var item = localStorage.getItem(name);
-    if (item && item != "undefined") {
-        return JSON.parse(item);
-    } else {
+    if (item == undefined) {
+        return null;
+    } else if (item == 'undefined') {
         return undefined;
+    } else {
+        return JSON.parse(item);
     }
 }
 
