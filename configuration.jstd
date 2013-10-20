@@ -16,6 +16,7 @@ exclude:
 
 test:
   - test/localStorageSpec.js
+  - test/localStorageSpec.js
 
 
 timeout: 90
