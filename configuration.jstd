@@ -1,0 +1,21 @@
+server: http://localhost:4224
+
+load:
+  - js/lib/angular-min.js
+  - js/lib/angular-animate.min.js
+  - test/lib/jasmine-1.3.0/jasmine.js
+  - test/lib/jasmine-1.3.0/jasmine-html.js
+  - test/lib/jasmine-1.3.0/jasmine-adapter.js
+  - test/lib/jasmine-given.js
+  - test/lib/angular-mocks.js
+  - js/*.js
+
+exclude:
+  - js/inputValidation.js
+  - js/sidebar.js
+
+test:
+  - test/localStorageSpec.js
+
+
+timeout: 90
