@@ -128,7 +128,7 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
 
 
     function saveTodosInLocalStorage() {
-        saveTodosToLocalStorage($scope.currentListName, $scope.currentTodos, $scope.completedTodos);
+        updateListTodosInLocalStorage($scope.currentListName, $scope.currentTodos, $scope.completedTodos);
     }
 
 

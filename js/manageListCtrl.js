@@ -6,7 +6,7 @@ angular.module('myApp').controller('manageListCtrl', ['$scope', function ($scope
     $scope.currentListName = getCurrentListFromLocalStorage();
 
     $scope.chooseList = function (listName) {
-        changeCurrentListInLocalStorage(listName);
+        saveCurrentListNameToLocalStorage(listName);
         window.location.replace('index.html');
     };
 
@@ -17,7 +17,7 @@ angular.module('myApp').controller('manageListCtrl', ['$scope', function ($scope
         } else {
             removeListAndUpdateLocalStorage(listName);
         }
-    }
+    };
 
     function replaceWithEmptyDefaultList() {
         $scope.currentListName = 'Default';
@@ -27,7 +27,7 @@ angular.module('myApp').controller('manageListCtrl', ['$scope', function ($scope
 
     function removeListAndUpdateLocalStorage(listName) {
         removeListFromListOfListNames(listName);
-        removeListFromLocalStorage(listName);
+        removeListTodosInLocalStorage(listName);
     }
 
     function removeListFromListOfListNames(listName) {
@@ -45,6 +45,7 @@ angular.module('myApp').controller('manageListCtrl', ['$scope', function ($scope
     function updateCurrentListNameIfDeleted(listName) {
         if ($scope.currentListName == listName) {
             $scope.currentListName = $scope.listNames[0];
+            saveCurrentListNameToLocalStorage($scope.currentListName);
         }
     }
 
