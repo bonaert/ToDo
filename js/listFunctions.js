@@ -24,6 +24,14 @@ function saveAllListNamesToLocalStorage(listOfListNames) {
     saveElementToLocalStorage(LIST_NAMES_KEY, listOfListNames);
 }
 
+function removeListFromListOfListNamesInLocalStorage(listName){
+    var currentListNames = getAllListNamesFromLocalStorage();
+    var index = currentListNames.indexOf(listName);
+    if (index > -1){
+        currentListNames.splice(index, 1);
+    }
+}
+
 
 /* Current todos of to do list*/
 
@@ -73,7 +81,7 @@ function updateListTodosInLocalStorage(newListName, currentTodos, completedTodos
     saveCompletedTodosToLocalStorage(newListName, completedTodos);
 }
 
-function createNewCurrentToLocalStorage(listName) {
+function createNewCurrentListToLocalStorage(listName) {
     var currentLists = getAllListNamesFromLocalStorage();
     if (currentLists.indexOf(listName) === -1) {
         currentLists.push(listName);
@@ -83,7 +91,7 @@ function createNewCurrentToLocalStorage(listName) {
 }
 
 function changeListNameInLocalStorage(oldName, newName) {
-    createNewCurrentToLocalStorage(newName);
+    createNewCurrentListToLocalStorage(newName);
     replaceLocalStorageTodos(oldName, newName);
 }
 

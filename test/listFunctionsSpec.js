@@ -51,6 +51,12 @@ describe("Lists", function () {
 
 
 
+    it("removes list names from list of list names", function(){
+        saveCurrentListNameToLocalStorage(listName);
+        removeListFromListOfListNamesInLocalStorage(listName);
+        expect(getAllListNamesFromLocalStorage()).not.toContain(listName);
+    });
+
     it("removes current todos of list", function () {
         saveCurrentTodosToLocalStorage(listName, currentTodos);
         removeCurrentTodosFromLocalStorage(listName);
@@ -77,17 +83,17 @@ describe("Lists", function () {
     });
 
     it("add list to local storage", function(){
-        createNewCurrentToLocalStorage(listName);
+        createNewCurrentListToLocalStorage(listName);
         expect(getCurrentListFromLocalStorage()).toBe(listName);
         expect(getAllListNamesFromLocalStorage()).toEqual(['Default', listName]);
     });
 
     it("add list only once to local storage", function(){
-        createNewCurrentToLocalStorage(listName);
+        createNewCurrentListToLocalStorage(listName);
         expect(getCurrentListFromLocalStorage()).toBe(listName);
         expect(getAllListNamesFromLocalStorage()).toEqual(['Default', listName]);
 
-        createNewCurrentToLocalStorage(listName);
+        createNewCurrentListToLocalStorage(listName);
         expect(getCurrentListFromLocalStorage()).toBe(listName);
         expect(getAllListNamesFromLocalStorage()).toEqual(['Default', listName]);
     });
