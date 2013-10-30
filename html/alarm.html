@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Remindo - Alarm</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/lib/semantic/packaged/css/semantic.min.css">
+    <script type="application/javascript" src="../js/lib/angular-min.js"></script>
+
+    <script type="application/javascript" src="../js/localStorageFunctions.js"></script>
+    <script type="application/javascript" src="../js/listFunctions.js"></script>
+    <script type="application/javascript" src="../js/alarmCtrl.js"></script>
+</head>
+
+
+<body ng-controller="alarmCtrl">
+
+<a class="ui red icon button" href="/html/index.html" style="width:100%">
+    <i class="reply mail icon"></i>
+    Go back
+</a>
+
+
+<form class="ui form segment">
+    <h2>Alarm: {{ currentTodo.text }}</h2>
+
+    <div class="ui left icon input field">
+        <input type="time" ng-model="alarmTime"/>
+        <i class="ui outline bell icon"></i>
+    </div>
+
+    <div class="ui green icon button field" ng-click="setAlarm()" style="width: 100%">
+        <i class="check icon"></i>
+    </div>
+
+</form>
+
+<div ng-if="isAlarmSet()" class="ui red icon button field" ng-click="deleteAlarm(alarm)">
+    Delete <i class="delete icon"></i>
+</div>
+</body>
+</html>
