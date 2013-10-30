@@ -29,6 +29,8 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
     };
 
 
+
+
     /* Length functions */
     $scope.getCurrentTodosLength = function () {
         return $scope.currentTodos.length;
@@ -42,6 +44,8 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
         $scope.completedTodos = [];
         saveTodosInLocalStorage();
     };
+
+
 
 
     /* Current todos being edited functions */
@@ -58,6 +62,8 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
     };
 
 
+
+
     /* Change todos state */
     $scope.setTodoCompleted = function (todo) {
         transferElement(todo, $scope.currentTodos, $scope.completedTodos);
@@ -68,6 +74,13 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
     };
 
 
+    $scope.showSetAlarmPage = function (todo){
+        saveCurrentTodoToLocalStorage(todo);
+        window.location.replace('/html/alarm.html');
+    }
+
+
+
     $scope.addTodo = function (newTodoText) {
         addTodoToTodoList(newTodoText);
         saveTodosInLocalStorage();
@@ -75,7 +88,7 @@ app.controller('ShowTodoCtrl', ['$scope', function ($scope) {
 
     function addTodoToTodoList(newTodoText) {
         if (newTodoText) {
-            var todo = {text: newTodoText};
+            var todo = {text: newTodoText, isAlarmSet: false};
             $scope.currentTodos.push(todo);
         }
     }

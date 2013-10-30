@@ -94,6 +94,12 @@
                     <i class="edit icon"></i>
                 </div>
 
+                <!-- Alarm -->
+                <div class="right floated green ui button"
+                     ng-click="showSetAlarmPage(todo)">
+                    <i class="bell outline icon"></i>
+                </div>
+
                 <!-- Text -->
                 <div class="content completeTodo" ng-click="setTodoCompleted(todo)">
                     <div class="todoText">
@@ -136,7 +142,7 @@
     </div>
 
     <div class="ui huge selection celled list">
-        <div class="item" ng-repeat="todo in completedTodos track by $index" >
+        <div class="item" ng-repeat="todo in completedTodos track by $index">
             <div class="right floated red ui button"
                  ng-click="deleteCompletedTodo(todo)">
                 <i class="delete icon"></i>
