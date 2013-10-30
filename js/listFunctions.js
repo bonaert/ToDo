@@ -1,7 +1,8 @@
 var LIST_NAMES_KEY = 'all.list.names',
     CURRENT_LIST_NAME_KEY = 'list.current_list_name',
     CURRENT_TODOS_NAME_KEY = 'current_todos_name',
-    COMPLETED_TODOS_NAME_KEY = 'completed_todos_name';
+    COMPLETED_TODOS_NAME_KEY = 'completed_todos_name',
+    CURRENT_TODO_KEY = 'list.currentTodo';
 
 
 /* Current to do list name */
@@ -61,6 +62,16 @@ function saveCompletedTodosToLocalStorage(listName, completedTodos) {
 function removeCompletedTodosFromLocalStorage(listName) {
     removeElementFromLocalStorage(listName + '.' + COMPLETED_TODOS_NAME_KEY);
 }
+
+/* Current to do */
+function getCurrentTodoFromLocalStorage(){
+    return getElementFromLocalStorageIfPossible(CURRENT_TODO_KEY);
+}
+
+function saveCurrentTodoToLocalStorage(todo){
+    saveElementToLocalStorage(CURRENT_TODO_KEY, todo);
+}
+
 
 
 function replaceLocalStorageTodos(oldListName, newListName) {
