@@ -7,7 +7,9 @@
         "url": "https://github.com/harokb/ToDo"
     },
     "permissions": {
-        "alarms":{}
+        "alarms":{
+            "description": "Required to schedule notifications"
+        }
     },
     "icons": {
         "30" : "/ico/icon-30.png",
