@@ -49,3 +49,107 @@ Word separation: CamelCase
         * The longer the scope, the shorter the scope
         * Public Methods should be short
         * Private functions should have descriptive names
+
+
+
+Functions
+
+------------------
+
+1. Functions should be small!
+
+2. Functions should be smaller than that.
+
+3. Lots of small, little, well named functions will save everybody's time:
+    - Your current time
+    - Your future self time
+    - Other people
+
+4. Function are the sign posts in your code, helping you find your way into the logic of the application.
+
+5. The number of functions doesn't matter, but their size is fundamental (smaller is better).
+
+6. Classes lurk in big functions. Keep your function small and separate everything out in a clear, orderly manner.
+
+7. Functions do one thing, they do it well and they it only.
+
+8. Guarantee of small function: extract till you drop (ETYD).
+
+9. Extract till you drop!
+
+
+Structure
+
+------------------
+
+1. Function signatures should be small, with few arguments (maximum 2).
+
+2. Never pass a boolean as an argument.
+   Divide the function into 2 separate ones that do one thing and one thing only.
+
+3. Never pass null as an argument.
+
+4. Never pass output argument(ex: String Builder, Buffer, ...). The function should do it.
+
+5. Organize methods according to the stepdown method
+
+    public ->
+        private ->
+            private^2 ->
+                ...
+
+        private ->
+             private^2 ->
+                ...
+
+        ...
+
+    public ->
+        ...
+
+6. No backward references in functions. (F1 -> F2, but F2 is declared before F1.) NEVER!
+
+7. Switch statements violate OO and independent deployability. Use polymorphism! At least move them into safe, independent modules.
+
+8. Avoid temporal coupling as much as possible (open ... close). Pass a block into a specialized function!
+
+9. Separate functions into commands and queries:
+
+    - Commands change the state of the system and don't return anything.
+    - Queries return something from the system but don't change its state.
+
+10. Tell, don't ask.
+
+    NO: o.getX().getY().getZ().doSomething();
+
+    Yes: o.doSomething()
+       -> X.doSomething()
+       -> Y.doSomething()
+       -> Z.doSomething()
+
+    This minimizes the amount of knowledge we must have. Without this, if we change Z, we must change Y, X and o.
+
+11. Remember the law of demeter! Functions should not know the structure of the system.
+
+12. Single entry. Single exit. (Fundamentals of structured programming)
+
+13. SINGLE entry. SINGLE exit.
+
+14. Did I mentioned that there should a single ENTRY and a single EXIT?
+
+15. Avoid return and break in loops.
+
+16. Error handling first! Error, then implementation.
+
+17. Exceptions: YES :)
+    Error codes: NO :(
+
+18. Exceptions should be scoped to class and descriptive (avoid reuse).
+
+19. Unchecked exceptions are better than checked exceptions.
+    If z in o.x().y().z() throws a checked exception, we must check it in y, x and o.
+    AVOID THEM!
+
+20. Nulls are often better than error (but be cautious about them).
+
+21. Null is not an error.
